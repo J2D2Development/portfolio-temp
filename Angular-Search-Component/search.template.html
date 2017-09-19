@@ -1,0 +1,43 @@
+<section id="search" *ngIf="searchService.searchOpen" (keyup.escape)="clearSearch()">
+    <span class="search-backdrop" (click)="clearSearch()"></span>
+    <div id="search-form-box" [formGroup]="SearchProducts">
+        <h1 [class.showing-input]="searchService.searchOpen" [class.hiding-input]="!searchService.searchOpen">
+            <input formControlName="searchTerm" type="text" placeholder="Search Our Software" ifautofocus />
+            <i class="fa fa-times cancel" 
+                aria-hidden="true" (click)="clearSearch()"
+            ></i>
+        </h1>
+        <div class="search-results">
+            <div class="search-notice" *ngIf="totalEntries > 0 && searchTerm.value">
+                {{totalEntries}} Match{{totalEntries > 1 ? "es" : ""}} Found
+            </div>
+            <div class="search-notice" *ngIf="totalEntries === 0 && searchTerm.value">
+                Sorry, No Matches Found For Your Search
+                <div class="options">
+                    <div>
+                        <a href (click)="goToSoftware($event)">Try Our Find Your Software Tool</a>
+                        <div>Or</div>
+                        <a href (click)="goToContact($event)">Contact Us For Info!</a>
+                    </div>
+                </div>
+            </div>
+            <ul class="search-results-list">
+                <li *ngFor="let item of items">
+                    <h2>
+                        <a (click)="navigateToProduct(item.route, $event)">{{item.name}}</a>
+                        <span>Module: {{item.module}}</span>
+                    </h2>
+                    <div class="search-results-desc">{{item.desc}}</div>
+                    <div class="related-products" *ngIf="item.related && item.related.length > 0">
+                        <span>Related Products</span>
+                        <div class="product-details-wrapper">
+                            <span *ngFor="let related of item.related" (click)="navigateToProduct(related.route)">
+                                {{related.name}}
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
