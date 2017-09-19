@@ -13,9 +13,7 @@ A "toast" style notification pop up, can be passed custom styles, timing, and di
 Reusable modal window for Angular application, can include custom callback invoked when the 'Ok' button is pressed.
 
 
-More projects I've worked on can be found on my GitHub profile (https://github.com/J2D2Development)
-
-The top 3 from GitHub are probably:
+The top 3 other projects from my GitHub profile are probably:
 1) crawler: Prototype for work, this uses Google's new Puppeteer library to crawl a single page app for server side render.  Comes with a command line or UI option.  The 'vue-integration' branch is much further along and has a Vue.js frontend (https://github.com/J2D2Development/crawler/tree/vue-integration).
 
 2) lightr: An in progress personal project.  React with Material-UI frontend integrated with Phillips' Hue lights API.
